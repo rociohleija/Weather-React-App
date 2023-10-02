@@ -1,35 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Weather.css";
 
 
 export default function Weather() {
-    let weatherData = {
-      city: "Houston",
-      temperature: "78",
-      date: "Sunday 8:34",
-      description: "Cloudy",
-      img: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
-      humidity: 83,
-      wind: 2
-    };
-  
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  function handleResponse(response) {
+    console.log(response.data);
+    setWeatherData({
+      ready: true,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      date: "Monday 11:00",
+      description: response.data.weather[0].description,
+      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
+      wind: response.data.wind.speed,
+      city: response.data.name
+    });
+  }
+
+    if (weatherData.ready) {
     return (
       <div className="Weather">
         <h1>{weatherData.city}</h1>
         <ul>
           <li>{weatherData.date}</li>
-          <li>{weatherData.description}</li>
+          <li className="text-capitalize">
+            {weatherData.description}</li>
         </ul>
         <div className="row">
           <div className="col-6">
             <div className="clearfix">
               <div className="float-right">
                 <img
-                  src={weatherData.img}
+                  src={weatherData.icon}
                   alt={weatherData.description}
                   className="float-left"
                 />
-                <span>{weatherData.temperature}</span>
+                <span className="temperature">
+                {Math.round(weatherData.temperature)}</span>
                 <span className="units">
                   <a href="/">°C</a> | <a href="/">°F</a>
                 </span>
@@ -76,4 +85,13 @@ export default function Weather() {
         <div className="weather-forecast" id="forecast"></div>
       </div>
     );
+
+   } else {
+    const apiKey = "82d232f689d92fca314b1eb07a4d627c";
+    let city = "Houston";
+    let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse); 
+
+    return "Loading...";
+   }
   }
