@@ -78,7 +78,7 @@ export default function Weather(props) {
           </div>
         </form>
         <span className="line"></span>
-        <div className="weather-forecast" id="forecast"></div>
+        <WeatherForecast />
       </div>
     );
 
