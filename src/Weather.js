@@ -24,17 +24,18 @@ export default function Weather(props) {
     const apiKey = "82d232f689d92fca314b1eb07a4d627c";
     let city = "Houston";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    console.log(apiUrl);
     axios.get(apiUrl).then(handleResponse); 
 
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    search()
   }
 
   function handleCityChange(event) {
-    event.preventDefault();
-    search(city);
+    setCity(event.target.value);
   }
 
     if (weatherData.ready) {
