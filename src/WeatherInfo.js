@@ -15,18 +15,17 @@ export default function WeatherInfo(props) {
             {props.data.description}</li>
         </ul>
         <div className="row mt-3">
-          <div className="col-6">
-            <div className="clearfix">
-              <div className="float-left">
-                <WeatherIcon code={props.data.icon} 
-                alt={props.data.description} />
+        <div className="col-6">
+          <div className="d-flex">
+            <div>
+              <WeatherIcon code={props.data.icon} size={52} />
+            </div>
 
-    
-                <WeatherTemperature fahrenheit={props.data.temperature}/>
-  
-              </div>
+            <div>
+              <WeatherTemperature fahrenheit={props.data.temperature} />
             </div>
           </div>
+        </div>
           <div className="col-6">
             <ul>
               <div className="float-right">
