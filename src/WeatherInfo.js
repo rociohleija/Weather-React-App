@@ -22,7 +22,7 @@ export default function WeatherInfo(props) {
                 alt={props.data.description} />
 
     
-                <WeatherTemperature celsius={props.data.temperature}/>
+                <WeatherTemperature fahrenheit={props.data.temperature}/>
   
               </div>
             </div>
