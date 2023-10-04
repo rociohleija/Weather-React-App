@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import WeatherInfo from './WeatherInfo';
+import WeatherForecast from './WeatherForecast';
 import axios from 'axios';
 import './Weather.css';
-import WeatherForecast from './WeatherForecast';
+
 
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultcity);
+  const [city, setCity] = useState(props.defaultCity);
+
   function handleResponse(response) {
-    console.log(response.data)
     setWeatherData({
       ready: true,
       coordinates: response.data.coord,
@@ -23,22 +24,22 @@ export default function Weather(props) {
     });
   }
 
-  function search() { 
-    const apiKey = "82d232f689d92fca314b1eb07a4d627c";
-    let city = "Houston";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-    console.log(apiUrl);
-    axios.get(apiUrl).then(handleResponse); 
-
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
-    search()
+    search();
   }
 
   function handleCityChange(event) {
     setCity(event.target.value);
+  }
+
+
+  function search() { 
+    const apiKey = "82d232f689d92fca314b1eb07a4d627c";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+    console.log(apiUrl);
+    axios.get(apiUrl).then(handleResponse); 
+
   }
 
     if (weatherData.ready) {
@@ -46,19 +47,13 @@ export default function Weather(props) {
       <div className="Weather">
         <WeatherInfo data={weatherData} />
 
-        <form 
-        className="search-form" 
-        id="search-form"
-        onSubmit={handleSubmit}
-        >
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-6">
               <input
                 type="search"
                 placeholder="Enter a city.."
                 autofocus="on"
-                autocomplete="off"
-                id="city-input"
                 className="form-control shadow-sm text-body"
                 onChange={handleCityChange}
               />
@@ -69,14 +64,6 @@ export default function Weather(props) {
                 value="Search"
                 className="form-control btn btn-primary shadow-sm w-100"
               />
-            </div>
-            <div className="col-3">
-              <button
-                className="btn btn-success w-100"
-                id="current-location-button"
-              >
-                Current
-              </button>
             </div>
           </div>
         </form>
