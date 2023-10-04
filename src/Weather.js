@@ -25,8 +25,6 @@ export default function Weather(props) {
 
   function search() { 
     const apiKey = "82d232f689d92fca314b1eb07a4d627c";
-    let longitude = props.coordinates.lon;
-    let latitude = props.coordinates.lat;
     let city = "Houston";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
     console.log(apiUrl);
