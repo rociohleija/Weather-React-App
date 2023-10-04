@@ -12,10 +12,19 @@ export default function App() {
      <Weather defaultCity="Houston"/> 
      <footer>
        This project was coded by{" "} 
-       <a href="https://astonishing-pixie-d099a0.netlify.app/">Rocio Hernandez
+       <a href="https://astonishing-pixie-d099a0.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+        Rocio Hernandez
        </a>{" "}
        and is{" "} 
-       <a href="https://github.com/rociohleija/Weather-React-Application">open-source on GitHub.</a>
+       <a href="https://github.com/rociohleija/Weather-React-Application"
+          target="_blank"
+          rel="noopener noreferrer"
+       >
+        open-source on GitHub.
+       </a>
      </footer>
      </div>
     </div>
