@@ -1,13 +1,15 @@
 import React from "react";
 import Weather from "./Weather";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+import Main from './Main';
 
 import './App.css';
 
 export default function App() {
   return (
     <div className="App">
+      <div>
+        <Main />
+      </div>
       <div className="container">
      <Weather defaultCity="Houston"/> 
      <footer>

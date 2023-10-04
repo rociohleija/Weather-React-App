@@ -30,10 +30,7 @@
     line-height: 1;
     list-style: none;
   }
-  .weather-app-wrapper {
-    max-width: 600 px;
-    margin: 30px auto;
-  }
+
   .Weather {
     border: 5px solid #dadde1;
     padding: 15px;
@@ -89,13 +86,6 @@
     opacity: 0.5;
   }
   
-  .Weather .weather-forecast-temperature-min {
-    opacity: 0.5;
-  }
-  
-  .Weather .weather-forecast-temperatures {
-    font-size: 13px;
-  }
   .Weather .line {
     border-bottom: 4px solid rgb(56, 75, 94);
     display: block;
